@@ -5,58 +5,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="images/logo.svg" type="image/lcons/logo">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>miniweather</title>
+    <title>TheFreo</title>
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="overlay">
-            <div class="weather">
-                <div class="sun" style="display: none;"></div>
-                <div class="rain" style="display: none;"></div>
-                <div class="storm"></div>
-                <div class="cloudy"></div>
-                <div class="fog"></div>
-                <div class="snow"></div>
+        <header class="header">
+            <div class="welcome">
+                <h1>TheFreo</h1>
             </div>
-            <header class="header">
-                <section class="city_pick" style="display: none;"></section>
+            <input style="position: absolute; right: 0; margin: 30px 90px 0 0; display: none;" type="color" id="favcolor" value="#ff0000">
+            <div class="header__theme">
+                <button class="themebtn" aria-label="Theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-moon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+            <button class="burger burger--follow" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-moon">
+                    <path d="M4 18L20 18" />
+                    <path d="M4 12L20 12" />
+                    <path d="M4 6L20 6" />
+                </svg>
+            </button>
+            <div class="menu">
+                <h1 class="lang" key="menu">Menu</h1>
+                <ul class="header_nav-list">
+                    <li class="header_nav-item">
+                        <button class="but lang" key="main" onclick="city(event, 'mains')">Main</button>
+                    </li>
+                    <li class="header_nav-item">
+                        <button class="but lang" key="about" onclick="city(event, 'about')">About me</button>
+                    </li>
+                    <li class="header_nav-item">
+                        <a href="https://github.com/TheFreo/">GitHub</a>
+                    </li>
+                    <li class="header_nav-item">
+                        <a href="https://shikimori.one/TheFreo">Shikimori</a>
+                    </li>
+                    <li class="header_nav-item">
+                        <a href="https://ovk.to/freo">OpenVK</a>
+                    </li>
+                    <li class="header_nav-item">
+                        <button style="color: #ffffff; background-color: #ffffff00; font-size: 24px;" class="translate"
+                            id="ru">RU</button>
+                        /
+                        <button style="color: #ffffff; background-color: #ffffff00; font-size: 24px;" class="translate"
+                            id="en">EN</button>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="header_line"></div>
+        <main id="content" class="main">
+            <section class="tab-content" id="mains">
                 <div class="container">
-                    <div class="header__inner">
-                        <h1>miniweather</h1>
-                        <div class="buttons">
-                            <a href="" id="locationName" style="margin-right: 10px;"></a>
-                            <a class="weatherLanguage">EN</a>
+                    <div class="main_wrapper">
+                        <div class="main_right">
+                            <div class="avatar">
+                                <img src="images/avatar.webp" alt="santoriuy">
+                            </div>
+                        </div>
+                        <div class="main_left">
+                            <h1 class="lang" id="timehello"></h1>
+                            <h1 class="lang" key="welup" style="margin-top: 0;">I'm TheFreo,</h1>
+                            <p class="lang" key="welun">I'm an aspiring programmer. I like to sit at
+                                home and watch anime :-)
+                                At the moment I am studying JavaScript.</p>
                         </div>
                     </div>
                 </div>
-            </header>
-            <main class="main">
-                <div class="container">
-                    <div class="main__inner">
-                        <h1 id="currentTemp"></h1>
-                        <div class="ps">
-                            <p id="weatherText"></p>
+            </section>
+            <section class="tab-content" id="about" style="display: none;">
+                <div class="about__wrapper">
+                    <div class="container">
+                        <div class="about__grid gridup">
+                            <div class="about__bio">
+                                <ul class="about__bio-list">
+                                    <h1 class="lang" key="bio" style="text-align: center; font-size: 26px;">Who Am I?
+                                    </h1>
+                                    <li class="about__bio-item lang" key="name">Name: Artem</li>
+                                    <li class="about__bio-item"><span class="lang" key="brith">Brithday: 15.06.2005
+                                            (through</span> <span id="d" class="days lang"></span> <span class="lang"
+                                            key="brith2">days)</span></li>
+                                    <li class="about__bio-item lang" key="country">Counrty: Russia (dream: Japan)</li>
+                                    <li class="about__bio-item lang" key="city">City: Novosibirsk (Hometowm: Surgut)
+                                    </li>
+                                    <li class="about__bio-item lang" key="stud">Studying: SibSUTIS</li>
+                                    <li class="about__bio-item lang" key="langu">Languages: Russia, English (30%),
+                                        Ukrainian (70%)</li>
+                                    <li class="about__bio-item lang" key="listen">Listen: Rock (Any), IDM, Ambient</li>
+                                </ul>
+                            </div>
+                            <div class="about__bar">
+                                <h1 class="lang" style="text-align: center; font-size: 26px;" key="skills">Skills</h1>
+                                <h2>HTML</h2>
+                                <div class="bar_main">
+                                    <div class="bar_fll" id="htmlLine" style="background-color: #ffa500">
+                                        <p id="htmlProg"></p>
+                                    </div>
+                                </div>
+                                <h2>CSS</h2>
+                                <div class="bar_main">
+                                    <div class="bar_fll" id="cssLine" style="background-color: #264de4">
+                                        <p id="cssProg"></p>
+                                    </div>
+                                </div>
+                                <h2>JavaScript</h2>
+                                <div class="bar_main">
+                                    <div class="bar_fll" id="jsLine" style="background-color: #ffff00;">
+                                        <p id="jsProg"></p>
+                                    </div>
+                                </div>
+                                <h2>C++</h2>
+                                <div class="bar_main">
+                                    <div class="bar_fll" id="cppLine" style="background-color: #044F88">
+                                        <p id="cppProg"></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <h1 class="lang" key="devices"
+                            style="text-align: center; font-size: 26px; margin-bottom: 15px;">Devices</h1>
+                        <div class="about__grid">
+                            <div class="about__mainpc">
+                                <h1 class="lang" key="pc">Main PC</h1>
+                                <ul class="pc_info-list">
+                                    <li class="pc_info-item lang"><span class="lang" key="os">OS:</span> Windows 10 Pro
+                                    </li>
+                                    <li class="pc_info-item lang"><span class="lang" key="cpu">CPU:</span> Amd Ryzen
+                                        5500</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="gpu">GPU:</span> Nvidia
+                                        Geforce GTX 1660 Super</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="ram">RAM:</span> 16 GB</li>
+                                </ul>
+                            </div>
+                            <div class="about__laptop">
+                                <h1 class="lang" key="lap">Laptop (MateBook D14)</h1>
+                                <ul class="pc_info-list">
+                                    <li class="pc_info-item lang"><span class="lang" key="os">OS:</span> macOS Big Sur
+                                        11.7
+                                    </li>
+                                    <li class="pc_info-item lang"><span class="lang" key="cpu">CPU:</span> Intel Core
+                                        i5-10210U</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="gpu">GPU:</span> Intel UHD
+                                        Graphics 620</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="ram">RAM:</span> 8 GB</li>
+                                </ul>
+                            </div>
+                            <!-- <div class="about__mac">
+                                <h1>Other</h1>
+                                <ul class="pc_info-list">
+                                    <li class="pc_info-item lang"><span class="lang" key="os">OS:</span> macOS Big Sur
+                                        11.7</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="cpu">CPU:</span> Intel Core
+                                        i3-3110m</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="gpu">GPU:</span> Intel HD
+                                        Graphics 3000</li>
+                                    <li class="pc_info-item lang"><span class="lang" key="ram">RAM:</span> 12 GB</li>
+                                </ul>
+                            </div> -->
+                        </div>
+                        <div class="about__contact">
+                            <h1 class="lang" key="cont"
+                                style=" text-align: center; font-size: 26px; margin-bottom: 15px;">Contacts</h1>
+                            <a style="color: #0088cc;" href="https://t.me/thefreo">Telegram</a>
+                            <a href="mailto:thefreo@bk.com">thefreo@bk.com</a>
+                        </div>
+                        <h3 style="text-align: center; margin-bottom: 30px;">©2024 TheFreo</h3>
                     </div>
                 </div>
-            </main>
-            <footer class="footer">
-                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg></a>
-            </footer>
-        </div>
+            </section>
+        </main>
+    </div>
     </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/lang.js"></script>
 <script src="js/main.js"></script>
 
 </html>
