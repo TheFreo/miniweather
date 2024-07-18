@@ -13,6 +13,20 @@
 // }
 // createRain();
 
+function getLocation() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(getPosition);
+	} else {
+		alert('devvv');
+	}
+}
+
+function getPosition(pos) {
+	let mn = pos.coords.latitude + ' ' + pos.coords.longitude;
+	localStorage.setItem('keepLoc', mn);
+	location.reload()
+}
+
 const nameLocation = document.getElementById("locationInput");
 document.getElementById("popupLocaton").addEventListener("submit", (e) => {
 	e.preventDefault()
@@ -20,18 +34,16 @@ document.getElementById("popupLocaton").addEventListener("submit", (e) => {
 	location.reload()
 });
 
-let getLocation = localStorage.getItem('keepLoc');
+let searchLocation = localStorage.getItem('keepLoc');
 
-if (getLocation === null) {
-	getLocation = 'Moscow';
+if (searchLocation === null) {
+	searchLocation = 'Moscow';
 	document.getElementById('popupLocaton').classList.toggle('popclose');
-	document.getElementById('popupLocaton').classList.toggle('popshow');
+	getLocation();
 }
 
-console.log(getLocation)
-
 async function getWeather() {
-	const url = `http://api.weatherapi.com/v1/current.json?key=e77fbd1f803c4a6da49173124241707&q=${getLocation}&aqi=no`;
+	const url = `http://api.weatherapi.com/v1/current.json?key=e77fbd1f803c4a6da49173124241707&q=${searchLocation}&aqi=no`;
 	console.log(url)
 	const res = await fetch(url);
 	const data = await res.json();
@@ -41,8 +53,11 @@ async function getWeather() {
 }
 getWeather();
 
-document.getElementById('locationName').onclick = function() {
-	document.getElementById('popupLocaton').classList.toggle('popclose');
+document.getElementById('locationName').onclick = function () {
+	const popupLoc = document.getElementById('popupLocaton');
+	popupLoc.classList.toggle('popclose');
+	if (!popupLoc.classList.contains('popclose')) {
+		getLocation();
+	}
 }
-
 

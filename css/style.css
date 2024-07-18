@@ -98,7 +98,7 @@
     padding: 20px;
     width: 300px;
     z-index: 999;
-    box-shadow: 1px 0px 43px 5px rgba(0,0,0,0.75);
+    box-shadow: 1px 0px 20px 3px rgba(0,0,0,0.75);
     border-radius: 20px;
     animation: 1s popanim;
 }
