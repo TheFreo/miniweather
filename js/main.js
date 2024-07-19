@@ -16,8 +16,6 @@
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(getPosition);
-	} else {
-		alert('devvv');
 	}
 }
 
@@ -60,4 +58,3 @@ document.getElementById('locationName').onclick = function () {
 		getLocation();
 	}
 }
-
