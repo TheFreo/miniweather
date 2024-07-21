@@ -45,6 +45,9 @@ async function getWeather() {
 	console.log(url)
 	const res = await fetch(url);
 	const data = await res.json();
+	if (data.error) {
+		locationName.textContent = `${data.error.message}`;
+	}
 	locationName.textContent = `${data.location.name}`;
 	currentTemp.textContent = `${Math.trunc(data.current.temp_c)}°C`;
 	weatherText.textContent = `${data.current.condition.text}`;
