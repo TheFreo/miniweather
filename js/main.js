@@ -54,6 +54,34 @@ async function getWeather() {
 }
 getWeather();
 
+async function getForecast() {
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=e77fbd1f803c4a6da49173124241707&q=${searchLocation}&days=4&aqi=no&alerts=no`;
+	const res = await fetch(url);
+	const data = await res.json();
+	for (let i = 0; i < 4; i++) {
+		const dateInfo = document.createElement("p");
+		const weatherInfo = document.createElement("p");
+		let ul = document.getElementById("listDays");
+		let li = document.createElement("li");
+
+		li.style.display = 'flex';
+		li.setAttribute("id", "day" + i)
+		ul.appendChild(li);
+
+		const tet = new Date(`${data.forecast.forecastday[i].date}`);
+		dateInfo.textContent = tet.toDateString().slice(0, -5);
+		document.getElementById("day" + i).appendChild(dateInfo);
+
+		// const weatherImg = new Image(32, 32);
+		// weatherImg.src = data.forecast.forecastday[i].day.condition.icon;
+		// document.getElementById("day" + i).appendChild(weatherImg);
+
+		weatherInfo.textContent = `${Math.trunc(data.forecast.forecastday[i].day.avgtemp_c)}°C`;
+		document.getElementById("day" + i).appendChild(weatherInfo);
+	}
+}
+getForecast();
+
 document.getElementById('locationName').onclick = function () {
 	const popupLoc = document.getElementById('popupLocaton');
 	popupLoc.classList.toggle('popclose');

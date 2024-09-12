@@ -108,3 +108,20 @@
     opacity: 0;
     top: 10%;
 }
+
+#listDays {
+    margin-top: 40px;
+}
+
+#listDays li {
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    width: 330px;
+}
+
+#listDays li p:last-child {
+    position: absolute;
+    right: 0;
+    margin-bottom: 0;
+}
