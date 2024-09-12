@@ -1,5 +1,5 @@
 # miniweather
 Minimalistic weather app
 
-Works for **[weapherapi](https://weatherapi.com)**
+Works for **[weatherapi](https://www.weatherapi.com/)**
 
