@@ -1,92 +1,82 @@
 .wrapper {
+    display: grid;
     min-height: 100%;
     width: 100%;
     overflow: hidden;
     font-family: NTSomic;
     font-weight: 400;
     font-size: 16px;
-}
-
-.container {
     max-width: 1200px;
     padding: 0 15px;
     margin: 0 auto;
 }
 
+.overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
 .header__inner {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    z-index: 2;
 }
 
-.main__inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.header__inner button {
+    background: #ffffff00; 
+    font-size: 16px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    margin-bottom: 20px;
+    justify-content: space-between;
+}
+
+.weatherMain{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.listItem{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
     text-align: center;
-    z-index: 2;
 }
 
-.main__inner h1 {
+.listItem h1{
     font-size: 80px;
-    margin-bottom: 10px;
+    margin-bottom: 22px;
 }
 
-.main__inner p {
-    text-align: center;
+.listItem p{
     font-size: 26px;
 }
 
-.footer {
+.wind {
     display: flex;
+    justify-content: center;
     align-items: center;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    right: 50%;
-    left: 50%;
-    margin-bottom: 20px;
+    margin-top: 63px;
 }
 
-/* .sun {
-    width: 599px;
-    height: 599px;
-    position: absolute;
-    background: yellow;
-    right: -10%;
-    top: -20%;
-    border-radius: 100%;
-    z-index: 1;
+.weaterNext{
+    align-self: center; 
+    bottom: 0; 
+    width: 70%;
 }
 
-.drop {
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(rgba(255, 255, 255, 0.6)));
-    background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(255, 255, 255, .6) 100%);
-    width: 1px;
-    height: 89px;
-    position: absolute;
-    bottom: 200px;
-    -webkit-animation: fall .63s linear infinite;
-    -moz-animation: fall .63s linear infinite;
-
+.footer {
+    text-align: center;
 }
-@-webkit-keyframes fall {
-    to {
-        margin-top: 900px;
-    }
-}
-@-moz-keyframes fall {
-    to {
-        margin-top: 900px;
-    }
-} 
-.body {
-    background: #0D343A;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(#000000));
-    background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(0, 0, 0, 1) 100%);
-} */
 
 .city_pick {
     position: absolute;
@@ -110,18 +100,22 @@
 }
 
 #listDays {
-    margin-top: 40px;
+    width: 100%;
+    font-size: 18px;
 }
 
 #listDays li {
-    display: block;
-    position: relative;
-    margin-bottom: 10px;
-    width: 330px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
-#listDays li p:last-child {
-    position: absolute;
-    right: 0;
-    margin-bottom: 0;
+#listDays li p {
+    align-content: center;
+}
+
+.darkthm {
+    background-color: #2E3643;
+    color: #fff;
+    fill: #fff;
 }
