@@ -1,3 +1,5 @@
+const apiKey = 'key';
+
 function getLocation() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(getPosition);
@@ -26,7 +28,7 @@ if (searchLocation === null) {
 }
 
 async function getWeather() {
-	const url = `https://api.weatherapi.com/v1/forecast.json?key==${searchLocation}&days=3&aqi=no&alerts=no`;
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchLocation}&days=3&aqi=no&alerts=no`;
 	const res = await fetch(url);
 	const data = await res.json();
 
