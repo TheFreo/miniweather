@@ -1,0 +1,32 @@
+{
+    "name": "miniweather",
+    "description": "Minimalistic weather app",
+    "start_url": "/?home=true",
+    "lang": "en-US",
+    "theme_color": "#fff",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "purpose": "monochrome",
+            "sizes": "192x192",
+            "src": "../icons/maskable_icon_x192.png",
+            "type": "image/png"
+        },
+        {
+            "purpose": "monochrome",
+            "sizes": "512x512",
+            "src": "../icons/maskable_icon_x512.png",
+            "type": "image/png"
+        },
+        {
+            "src": "../icons/logo.svg",
+            "sizes": "800x800"
+        }
+    ],
+    "screenshots": [
+        {
+            "sizes": "512x512",
+            "src": "../icons/maskable_icon_x512.png"
+        }
+    ]
+    }
