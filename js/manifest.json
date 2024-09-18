@@ -4,7 +4,7 @@
     "start_url": "/?home=true",
     "lang": "en-US",
     "theme_color": "#fff",
-    "display": "fullscreen",
+    "display": "standalone",
     "icons": [
         {
             "purpose": "monochrome",
@@ -19,6 +19,7 @@
             "type": "image/png"
         },
         {
+            "purpose": "monochrome",
             "src": "../icons/logo.svg",
             "sizes": "800x800"
         }
@@ -29,4 +30,4 @@
             "src": "../icons/maskable_icon_x512.png"
         }
     ]
-    }
+}
