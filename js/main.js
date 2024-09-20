@@ -1,4 +1,4 @@
-const apiKey = 'e77fbd1f803c4a6da49173124241707';
+const apiKey = 'key';
 
 const themeColor = document.querySelector('meta[name="theme-color"]');
 
