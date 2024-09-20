@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minimalistic weather app">
     <link rel="manifest" href="js/manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -32,6 +33,9 @@
         <div class="overlay">
             <header class="header">
                 <form class="city_pick popclose" id="popupLocaton">
+                    <button type="button" id="geoButton">
+                        <img style="background-color: #ffffff; height: 18px;" src="icons/geo.svg" alt="Geolocation">
+                    </button>
                     <input type="text" placeholder="Enter a location:" id="locationInput">
                     <input type="submit" style="background: #ffffff;" value="Search">
                 </form>

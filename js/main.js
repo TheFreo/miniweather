@@ -75,10 +75,13 @@ getWeather();
 document.getElementById('locationName').onclick = function () {
 	const popupLoc = document.getElementById('popupLocaton');
 	popupLoc.classList.toggle('popclose');
-	if (!popupLoc.classList.contains('popclose')) {
-		getLocation();
-	}
 }
+
+document.getElementById('geoButton').onclick = function () {
+	getLocation();
+}
+
+
 
 function darkTheme() {
 	const wrapper = document.body;
