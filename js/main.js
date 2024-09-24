@@ -29,6 +29,16 @@ if (searchLocation === null) {
 	getLocation();
 }
 
+function convertTo24HourFormat(timeString) {
+	const [time, period] = timeString.split(' ');
+	const [hour, minute] = time.split(':');
+	let formattedHour = parseInt(hour);
+	if (period === 'PM') {
+		formattedHour += 12;
+	}
+	return `${formattedHour}${minute}`;
+}
+
 async function getWeather() {
 	const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchLocation}&days=3&aqi=no&alerts=no`;
 	const res = await fetch(url);
@@ -42,6 +52,22 @@ async function getWeather() {
 	currentTemp.textContent = `${Math.trunc(data.current.temp_c)}°C`;
 	weatherText.textContent = `${data.current.condition.text}`;
 	weatherWind.textContent = `${data.current.wind_mph}m/s`;
+
+	let dateTime = new Date();
+	let hourT = Number(`${dateTime.getHours()}${dateTime.getMinutes()}`);
+
+	const inputSunset = `${data.forecast.forecastday[0].astro.sunset}`;
+	const inputSunrise = `${data.forecast.forecastday[1].astro.sunrise}`;
+	const formattedSunset = convertTo24HourFormat(inputSunset);
+	const formattedSunrise = convertTo24HourFormat(inputSunrise);
+
+	if (hourT <= formattedSunrise) {
+		darkTheme();
+		themeColor.content = '#2E3643';
+	} else if (hourT > formattedSunset) {
+		darkTheme();
+		themeColor.content = '#2E3643';
+	}
 
 	const weatherImg = new Image(100, 100);
 	weatherImg.src = data.current.condition.icon;
@@ -81,8 +107,6 @@ document.getElementById('geoButton').onclick = function () {
 	getLocation();
 }
 
-
-
 function darkTheme() {
 	const wrapper = document.body;
 	wrapper.classList.toggle('darkthm');
@@ -103,12 +127,4 @@ function darkTheme() {
 
 document.getElementById('themeToggle').onclick = function () {
 	darkTheme();
-}
-
-let dateTime = new Date();
-let hour = dateTime.getHours();
-
-if (hour < 6) {
-	darkTheme();
-	themeColor.content = '#2E3643';
 }
