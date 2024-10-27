@@ -1,5 +1,7 @@
 # miniweather
 Minimalist Progressive Web Application for Weather Forecast
 
-Works for **[weatherapi](https://www.weatherapi.com/)**
+- This project is a PWA (Progressive Web App)
+- Google Page Speed score `~96`
+- Powered by **[weatherapi](https://www.weatherapi.com/)**
 
